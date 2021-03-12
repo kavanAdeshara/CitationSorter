@@ -6,3 +6,4 @@ Java application to sort citations based on identifier and year of a citation. U
 
 # GIF Tutorial
 
+<img src='VideoWalkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
