@@ -238,7 +238,9 @@ public class Citation {
         insertionSort(citations, Citation.byYearOrder());
 
         for(int i = 0; i < citations.length; i++){
-            System.out.println(citations[i].rest);
+            System.out.print("@");
+            System.out.println(citations[i].rest.replaceAll(",  ", "\n\t"));
+            System.out.println('\n');
         }
     }
 
