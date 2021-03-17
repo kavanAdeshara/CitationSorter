@@ -1,7 +1,5 @@
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Comparator;
-import java.io.File;
 import java.util.Scanner;
 
 public class Citation {
@@ -60,6 +58,9 @@ public class Citation {
         boolean cond3 = false;
         boolean cond4 = false;
 
+        PrintStream console = System.out;
+        PrintStream fileOut = new PrintStream("./SortedCitations.txt");
+
         // Array of citation objects, representing each citation in the bib text file
         Citation[] citations;
 
@@ -83,6 +84,8 @@ public class Citation {
                 }
             }
         }
+
+        System.setOut(fileOut);
 
 
         // Acquiring the actual file from the provided file path
@@ -126,6 +129,7 @@ public class Citation {
         }
         else if(cond3){
             sortByID(citations);
+
         }
         else if(cond4){
             sortByYear(citations);
@@ -134,6 +138,8 @@ public class Citation {
             System.out.println("Based on your input you do not want to sort the citation");
         }
 
+
+        System.setOut(console);
 
     }
 
@@ -206,6 +212,7 @@ public class Citation {
      * @param citations
      */
     private static void sortByID(Citation[] citations){
+
         System.out.println(" ");
         System.out.println("Sorting by Identifier: ------");
         System.out.println(" ");
@@ -213,7 +220,9 @@ public class Citation {
         insertionSort(citations, Citation.byIdOrder());
 
         for(int i = 0; i < citations.length; i++){
-            System.out.println(citations[i].rest);
+            System.out.print("@");
+            System.out.println(citations[i].rest.replaceAll(",  ", "\n\t"));
+            System.out.println('\n');
         }
     }
 
